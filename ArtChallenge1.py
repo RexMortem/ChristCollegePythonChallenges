@@ -6,7 +6,6 @@
 
 # Found the butterfly curve online in parametric form fortunately [https://mathworld.wolfram.com/ButterflyCurve.html]
 # X = sin(theta)
-
 import numpy as np
 import matplotlib.pyplot as plot
 
@@ -45,22 +44,30 @@ def GenerateButterflyCurve(size, thickness):
 
     return XPoints, YPoints
 
-def GenerateSin():  
-    XPoints = np.arange(0, 3 * np.pi, 0.1)
-    YPoints = np.sin(XPoints)
-
-    return XPoints, YPoints
-
-# T1 (Plot a circle)
-#X, Y = GenerateCircle(5, (4, 2))
-# T2 (Fermat's Spiral Parametric)
-#X,Y, X2, Y2 = GenerateFermatsSpiral(5, 20)
-# T3 (Butterfly Curve)
-X, Y = GenerateButterflyCurve(1, 100)
-
 plot.axis("equal")
 
-plot.plot(X, Y)
-#plot.plot(X2, Y2) # for Fermat's spiral (T2, E3)
+def T1(): # Plot a circle
+    X, Y = GenerateCircle(5, (4, 2))
+    plot.plot(X, Y) 
+
+def T2(): # Fermat's Spiral Parametric
+    X,Y, X2, Y2 = GenerateFermatsSpiral(5, 20)
+    plot.plot(X, Y)
+    plot.plot(X2, Y2)
+
+def T3(): # Butterfly Curve
+    X, Y = GenerateButterflyCurve(1, 100)
+    plot.plot(X, Y) 
+
+def GenerateAndDrawCircle(radius, centre):
+    X,Y = GenerateCircle(radius, centre)
+    plot.plot(X, Y)
+
+def E1(): # Multiple Circles
+    GenerateAndDrawCircle(1, (0,0))
+    GenerateAndDrawCircle(2, (0,0))
+    GenerateAndDrawCircle(3, (0,0))
+    GenerateAndDrawCircle(4, (0,0))
+    GenerateAndDrawCircle(5, (0,0))
 
 plot.show()
